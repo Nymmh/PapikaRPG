@@ -1,21 +1,21 @@
-let express = require('express');
-let http = require('http');
-let path = require('path');
-let socketIO = require('socket.io');
-let cookieParser = require('cookie-parser');
-let request = require('request');
-let app = express();
-let server = http.Server(app);
-let io = socketIO(server);
-let fs = require('fs');
-let rateLimit = require("express-rate-limit");
-let mongoose = require('mongoose');
-let socketCookieParser = require('socket.io-cookie-parser');
+let express = require('express'),
+    http = require('http'),
+    path = require('path'),
+    socketIO = require('socket.io'),
+    cookieParser = require('cookie-parser'),
+    request = require('request'),
+    app = express(),
+    server = http.Server(app),
+    io = socketIO(server),
+    fs = require('fs'),
+    rateLimit = require("express-rate-limit"),
+    mongoose = require('mongoose'),
+    socketCookieParser = require('socket.io-cookie-parser');
 
-let {db} = require('./closed/config.js');
-let connect = require('./events/connect.js');
-let chat = require('./events/chat.js');
-let jobs = require('./events/jobs.js');
+let {db} = require('./closed/config.js'),
+    connect = require('./events/connect.js'),
+    chat = require('./events/chat.js'),
+    jobs = require('./events/jobs.js');
 
 try{
     mongoose.connect(db, {useNewUrlParser:true});

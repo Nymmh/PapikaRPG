@@ -1,6 +1,6 @@
-let requets = require('request');
-let base_url = `https://discordapp.com/api/users/@me`;
-let atlis = require('../closed/atlis');
+let requets = require('request'),
+    base_url = `https://discordapp.com/api/users/@me`,
+    atlis = require('../closed/atlis');
 module.exports = {
     signin(socket,SOCKET_LIST){
       if(socket.request.cookies.discord_token){

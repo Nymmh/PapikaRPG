@@ -1,8 +1,8 @@
-var socket = io.connect('http://localhost:5000');
-var loadingimg = document.getElementById('loadingScreen');
-var innerPlayerList = document.getElementById('innerPlayerList');
-var globalchat = document.getElementById('global_chat_log');
-var playArea = document.getElementById('playArea');
+let socket = io.connect('http://localhost:5000'),
+    loadingimg = document.getElementById('loadingScreen'),
+    innerPlayerList = document.getElementById('innerPlayerList'),
+    globalchat = document.getElementById('global_chat_log'),
+    playArea = document.getElementById('playArea');
 window.onload = ()=>{loadingimg.style.display = "none"}
 function loadingScreenOn(){
   loadingimg.style.display = "block";
@@ -10,23 +10,23 @@ function loadingScreenOn(){
 function loadingScreenOff(){
   loadingimg.style.display = "none";
 }
-socket.on('joinPlayerList',(data)=>{
+socket.on('joinPlayerList',data=>{
   for(let q in data){
     if(data[q] != null){
       innerPlayerList.innerHTML += `<div>${data[q]}</div>`;
     }
   }
 });
-socket.on('addToPlayerList',(data)=>{
+socket.on('addToPlayerList',data=>{
   innerPlayerList.innerHTML += `<div>${data}</div>`;
 });
 socket.on('alert',(data)=>{
   alert(data);
 });
-socket.on('addToChatGlobal',(data)=>{
+socket.on('addToChatGlobal',data=>{
   globalchat.innerHTML += `<div><p>${data}</p></div>`;
 });
-socket.on('updatePlayerList',(data)=>{
+socket.on('updatePlayerList',data=>{
   innerPlayerList.innerHTML = '';
   for(let q in data){
     if(data[q] != null){
@@ -34,10 +34,10 @@ socket.on('updatePlayerList',(data)=>{
     }
   }
 });
-socket.on('changelogin',(data)=>{
+socket.on('changelogin',data=>{
   if(data.token){
-    let loginDiv = document.getElementById('login');
-    let clientShort = document.getElementById('clientShort');
+    let loginDiv = document.getElementById('login'),
+        clientShort = document.getElementById('clientShort');
     loginDiv.parentNode.removeChild(loginDiv);
     let addSick = '',
         addRebalTrain = '',
@@ -62,6 +62,6 @@ socket.on('changelogin',(data)=>{
     clientShort.style.display = "none";
   }
 });
-socket.on('jobListResponse',(data)=>{
+socket.on('jobListResponse',data=>{
   playArea.innerHTML += `<div class="joblist" id="joblist">${data}</div>`;
 });
