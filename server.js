@@ -15,7 +15,7 @@ let socketCookieParser = require('socket.io-cookie-parser');
 let {db} = require('./closed/config.js');
 let connect = require('./events/connect.js');
 let chat = require('./events/chat.js');
-let atlis = require('./closed/atlis.js');
+let jobs = require('./events/jobs.js');
 
 try{
     mongoose.connect(db, {useNewUrlParser:true});
@@ -64,9 +64,9 @@ io.on('connection',function (socket){
     socket.on('sendMsgToServer',data=>{
         chat.addToGlobal(data,socket,SOCKET_LIST);
     });
-    socket.on('requestGang',()=>{
-        //wont do anything rn
-    })
+    socket.on('requestJobListing',()=>{
+        jobs.requestJobsList(socket,SOCKET_LIST);
+    });
 });
 
 let port = process.env.PORT || 5000;

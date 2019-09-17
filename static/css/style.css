@@ -124,9 +124,33 @@ body{
 }
 #jobListing{
     margin-top: .5rem;
-    cursor: pointer;
     left: 95%;
     position: relative;
     max-width: 9rem;
     top: .5rem;
+    background: transparent;
+    border: none;
+}
+#jobListing:focus{
+    outline: none;
+}
+.joblist{
+    width: 100%;
+    background: rgb(43,43,43,.8);
+    border-radius: 6px;
+    z-index: 1000;
+    padding: 10px;
+    margin-top: 10rem;
+    display: inline-grid;
+    grid-template-columns: repeat(4,1fr);
+    column-gap: 5rem;
+}
+.AcceptJobButton{
+    border: none;
+    background-color: #a6e0c5;
+    color: #383838;
+    border-radius: 5px;
+    letter-spacing: 1px;
+    padding: 4px 7px;
+    font-weight: bolder;
 }
