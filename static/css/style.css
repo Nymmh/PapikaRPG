@@ -1,0 +1,132 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    background: #454545;
+    color: aliceblue;
+}
+.global_chat{
+    float: right;
+    /* padding-right: 2%; */
+    background-color: #3D4C5E;
+    margin-right: 1rem;
+    width: 40rem;
+    position: absolute;
+    bottom: 2rem;
+    right: 0;
+    height: 50rem;
+    border-radius: 6px;
+}
+.global_chat_box{
+    padding: .5rem;
+}
+.global_chat_log{
+    width: 98.5%;
+    position: absolute;
+    bottom: 3rem;
+    overflow-y: scroll;
+    height: 43.5rem;
+}
+.global_form{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding-right: 2rem;
+}
+.chattext{
+    border-color: #311F42;
+    background-color: transparent;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    width: 100%;
+}
+.chatHeader{
+    font-size: 1.7rem;
+}
+.playerList{
+    float: right;
+    background-color: #3D4C5E;
+    margin-right: 1rem;
+    width: 40rem;
+    position: absolute;
+    top: 2rem;
+    right: 0;
+    height: 40rem;
+    border-radius: 6px;
+}
+.innerPlayerList{
+    width: 98.5%;
+    position: absolute;
+    bottom: 2.5rem;
+    overflow-y: scroll;
+    height: 34rem;
+}
+.login{
+    position: absolute;
+    right: 0;
+    top: 0;
+    float: right;
+    margin-right: 41rem;
+    margin-top: 2rem;
+}
+.loadingScreen{
+    width: 70rem;
+    position: absolute;
+    left: 27%;
+}
+.lobby_chat{
+    float: right;
+    /* padding-right: 2%; */
+    background-color: #3D4C5E;
+    margin-right: 41rem;
+    width: 40rem;
+    position: absolute;
+    bottom: 2rem;
+    right: 0;
+    height: 50rem;
+    border-radius: 6px;
+}
+#clientShort{
+    max-width: 250px;
+    font-size: 1.5rem;
+    color: aliceblue;
+    padding: 10px;
+    border-radius: 10px;
+    background: #232b38;
+    margin: 1rem;
+}
+.shortClientImg{
+    border-radius: 5px;
+    width: 5.4rem;
+    padding-right: 1rem;
+}
+.shortClientName{
+    position: relative;
+    top: -1rem;
+}
+.discordButton{
+    border-radius: 3px;
+    font-size: 14px;
+    line-height: 16px;
+    padding: 2px 16px;
+    color: #fff;
+    background-color: #7289da;
+}
+#playArea{
+    margin: 1rem;
+    width: 77%;
+    position: absolute;
+    top: 0;
+}
+#jobListing{
+    margin-top: .5rem;
+    cursor: pointer;
+    left: 95%;
+    position: relative;
+    max-width: 9rem;
+    top: .5rem;
+}
