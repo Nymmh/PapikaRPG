@@ -11,7 +11,7 @@ function loadingScreenOff(){
   loadingimg.style.display = "none";
 }
 socket.on('joinPlayerList',(data)=>{
-  for(var q in data){
+  for(let q in data){
     if(data[q] != null){
       innerPlayerList.innerHTML += `<div>${data[q]}</div>`;
     }
@@ -28,7 +28,7 @@ socket.on('addToChatGlobal',(data)=>{
 });
 socket.on('updatePlayerList',(data)=>{
   innerPlayerList.innerHTML = '';
-  for(var q in data){
+  for(let q in data){
     if(data[q] != null){
       innerPlayerList.innerHTML += `<div>${data[q]}</div>`;
     }

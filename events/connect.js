@@ -26,7 +26,7 @@ module.exports = {
                 socket.gang = 0;
                 socket.police = null;
                 atlis.testUser(socket,Discordid,username,avatar,discriminator);
-            for(var i in SOCKET_LIST){
+            for(let i in SOCKET_LIST){
               SOCKET_LIST[i].emit('addToChatGlobal',`System: ${socket.nickname} connected`);
               SOCKET_LIST[i].emit('addToPlayerList',socket.nickname);
             }
@@ -40,7 +40,7 @@ module.exports = {
     },
 
     disconnect(socket,SOCKET_LIST,clients){
-      for(var i in SOCKET_LIST){
+      for(let i in SOCKET_LIST){
           if(socket.nickname != null){
             for(let i in clients){
               if(socket.nickname == clients[i]){
