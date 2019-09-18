@@ -134,6 +134,18 @@ body{
 #jobListing:focus{
     outline: none;
 }
+#workButton{
+    margin-top: .5rem;
+    left: 89.2%;
+    position: relative;
+    max-width: 9rem;
+    top: 3rem;
+    background: transparent;
+    border: none;
+}
+#workButton:focus{
+    outline: none;
+}
 .joblist{
     width: 100%;
     background: rgb(43,43,43,.8);

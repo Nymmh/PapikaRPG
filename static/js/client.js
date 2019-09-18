@@ -55,7 +55,8 @@ socket.on('changelogin',data=>{
     ${addSick}
     ${addRebalTrain}`;
 
-    playArea.innerHTML = `<button id="jobListing" onclick="jobListing()">Job Listings</button>`;
+    playArea.innerHTML += `<button id="jobListing" onclick="jobListing()">Job Listings</button>`;
+    playArea.innerHTML += `<button id="workButton" onclick="workButton()">Work</button>`;
   }else{
     let clientShort = document.getElementById('clientShort');
     clientShort.style.display = "none";

@@ -70,6 +70,9 @@ io.on('connection',function (socket){
     socket.on('acceptedJob',data=>{
         jobs.acceptedjob(data,socket,SOCKET_LIST);
     });
+    socket.on('requestWork',()=>{
+        jobs.requestWork(socket,SOCKET_LIST);
+    });
 });
 
 let port = process.env.PORT || 5000;
