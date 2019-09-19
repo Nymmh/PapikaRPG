@@ -46,7 +46,7 @@ socket.on('changelogin',data=>{
     if(data.rebal_training)addRebalTrain = `<div id="playerRebal"><p>Rebal Training</p></div>`;
     if(data.gang)addGang = `<div id="playerGang"><p>Gang: ${data.gang}</p></div>`;
     clientShort.innerHTML += `<img src="https://cdn.discordapp.com/avatars/${data.discordid}/${data.avatar}" alt="avatar for ${data.username}" class="shortClientImg"><span class="shortClientName">${data.username}</span>
-    <div id="playerMoney"><p>Money: <span>${data.money}</span></p></div>
+    <div id="playerMoney"><p>Cocona's: <span>${data.money}</span></p></div>
     <div id="playerJob"><p>Job: <span>${data.job}</span></p></div>
     <div id="playerHappiness"><p>Happiness: <span>${data.happiness}</span></p></div>
     <div id="playerHunger"><p>Hunger: <span>${data.hunger}</span></p></div>
@@ -110,7 +110,7 @@ socket.on('updateClientShort',(data)=>{
   if(data.rebal_training)addRebalTrain = `<div id="playerRebal"><p>Rebal Training</p></div>`;
   if(data.gang)addGang = `<div id="playerGang"><p>Gang: ${data.gang}</p></div>`;  
   let clientShort = document.getElementById('clientShort');
-  clientShort.innerHTML += `<div id="playerMoney"><p>Money: <span>${data.money}</span></p></div>
+  clientShort.innerHTML += `<div id="playerMoney"><p>Cocona's: <span>${data.money}</span></p></div>
   <div id="playerJob"><p>Job: <span>${data.job}</span></p></div>
   <div id="playerHappiness"><p>Happiness: <span>${data.happiness}</span></p></div>
   <div id="playerHunger"><p>Hunger: <span>${data.hunger}</span></p></div>

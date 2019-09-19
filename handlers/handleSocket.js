@@ -17,5 +17,8 @@ module.exports = {
         for(let i in SOCKET_LIST){
             SOCKET_LIST[i].emit('addToChatGlobal',`System: ${socket.nickname} is now a ${socket.job}`);
         }
+    },
+    msgToClient(data,socket){
+        socket.emit('addToChatGlobal',data);
     }
 }

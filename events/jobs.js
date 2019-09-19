@@ -1,4 +1,5 @@
-let atlis = require('../closed/atlis');
+let atlis = require('../closed/atlis'),
+    work = require('../closed/work.js');
 module.exports = {
     requestJobsList(socket,SOCKET_LIST){
         atlis.getJobListing(socket,SOCKET_LIST);
@@ -23,11 +24,12 @@ module.exports = {
             let remainTime = 20;
             if(socket.jobLastWork != 0){
                 checkedTime = ~~((currentTime - socket.jobLastWork)/1000);
-                remainTime = 20 - socket.jobLastWork;
-            }
-            if(checkedTime<20)socket.emit('alert',`You can not work for another ${remainTime}`)
-            else{
-                atlis.workHandler(currentTime,socket,SOCKET_LIST);
+                remainTime = 20 - checkedTime;
+                if(checkedTime<20)socket.emit('alert',`You can not work for another ${remainTime} seconds`)
+                else{
+                    socket.jobLastWork = currentTime;
+                    work.workHandler(currentTime,socket,SOCKET_LIST);
+                }
             }
         }
     }
