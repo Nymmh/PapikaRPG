@@ -15,7 +15,8 @@ let express = require('express'),
 let {db} = require('./closed/config.js'),
     connect = require('./events/connect.js'),
     chat = require('./events/chat.js'),
-    jobs = require('./events/jobs.js');
+    jobs = require('./events/jobs.js'),
+    autocheck = require('./closed/workAutoChecker.js');
 
 try{
     mongoose.connect(db, {useNewUrlParser:true});
@@ -58,6 +59,7 @@ io.on('connection',function (socket){
     socket.emit('joinPlayerList',clients);
     SOCKET_LIST[socket.id] = socket;
     connect.signin(socket,SOCKET_LIST);
+    autocheck.check(socket);
     socket.on('disconnect', ()=>{
         connect.disconnect(socket,SOCKET_LIST,clients);
     });

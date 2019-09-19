@@ -30,6 +30,9 @@ module.exports = {
                     socket.jobLastWork = currentTime;
                     work.workHandler(currentTime,socket,SOCKET_LIST);
                 }
+            }else{
+                socket.jobLastWork = currentTime;
+                work.workHandler(currentTime,socket,SOCKET_LIST);
             }
         }
     }
