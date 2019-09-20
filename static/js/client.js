@@ -56,7 +56,7 @@ socket.on('changelogin',data=>{
     ${addRebalTrain}`;
 
     playArea.innerHTML += `<button id="jobListing" onclick="jobListing()">Job Listings</button>`;
-    playArea.innerHTML += `<button id="workButton" onclick="workButton()">Work</button>`; //add work cooldown
+    playArea.innerHTML += `<button id="workButton" onclick="workButton()">Work</button>`;
     playArea.innerHTML += `<button id="sleepButton" onclick="sleepButton()">Sleep</button>`;
   }else{
     let clientShort = document.getElementById('clientShort');

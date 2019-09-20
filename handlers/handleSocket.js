@@ -20,5 +20,8 @@ module.exports = {
     },
     msgToClient(data,socket){
         socket.emit('addToChatGlobal',data);
+    },
+    msgAlert(data,socket){
+        socket.emit('alert',data);
     }
 }

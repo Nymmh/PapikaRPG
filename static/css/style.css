@@ -146,6 +146,18 @@ body{
 #workButton:focus{
     outline: none;
 }
+#sleepButton{
+    margin-top: .5rem;
+    left: 86.3%;
+    position: relative;
+    max-width: 9rem;
+    top: 5.5rem;
+    background: transparent;
+    border: none;
+}
+#sleepButton:focus{
+    outline: none;
+}
 .joblist{
     width: 100%;
     background: rgb(43,43,43,.8);

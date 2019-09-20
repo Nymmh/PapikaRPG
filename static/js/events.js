@@ -11,3 +11,6 @@ function jobListing(){
 function workButton(){
     socket.emit('requestWork');
 }
+function sleepButton(){
+    socket.emit('requestSleep');
+}

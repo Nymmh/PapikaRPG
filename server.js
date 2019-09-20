@@ -16,7 +16,8 @@ let {db} = require('./closed/config.js'),
     connect = require('./events/connect.js'),
     chat = require('./events/chat.js'),
     jobs = require('./events/jobs.js'),
-    autocheck = require('./closed/workAutoChecker.js');
+    autocheck = require('./closed/workAutoChecker.js'),
+    sleep = require('./events/player.js');
 
 try{
     mongoose.connect(db, {useNewUrlParser:true});
@@ -75,6 +76,9 @@ io.on('connection',function (socket){
     socket.on('requestWork',()=>{
         jobs.requestWork(socket,SOCKET_LIST);
     });
+    socket.on('requestSleep',()=>{
+        sleep.requestSleep(socket);
+    })
 });
 
 let port = process.env.PORT || 5000;
