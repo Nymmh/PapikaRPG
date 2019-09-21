@@ -73,6 +73,16 @@ socket.on('workCoolDownReset',()=>{
     document.getElementById('workButton').innerText = `Work`;
   }
 });
+socket.on('sleepCoolDown',data=>{
+  if(document.getElementById('sleepButton')){
+    document.getElementById('sleepButton').innerText = `Sleep: ${data}`;
+  }
+});
+socket.on('sleepCoolDownReset',()=>{
+  if(document.getElementById('sleepButton')){
+    document.getElementById('sleepButton').innerText = `Sleep`;
+  }
+});
 socket.on('jobListResponse',data=>{
   playArea.innerHTML += `<div class="joblist" id="joblist"></div>`;
   let joblist = document.getElementById('joblist');
