@@ -14,3 +14,7 @@ function workButton(){
 function sleepButton(){
     socket.emit('requestSleep');
 }
+function storeListing(){
+    if(document.getElementById('storelist')) document.getElementById('storelist').parentNode.removeChild(document.getElementById('storelist'));
+    else socket.emit('requestStoreList');
+}

@@ -56,6 +56,7 @@ socket.on('changelogin',data=>{
     ${addRebalTrain}`;
 
     playArea.innerHTML += `<button id="jobListing" onclick="jobListing()">Job Listings</button>`;
+    playArea.innerHTML += `<button id="storeListing" onclick="storeListing()">Store</button>`;
     playArea.innerHTML += `<button id="workButton" onclick="workButton()">Work</button>`;
     playArea.innerHTML += `<button id="sleepButton" onclick="sleepButton()">Sleep</button>`;
   }else{
@@ -102,6 +103,9 @@ socket.on('jobListResponse',data=>{
     e.preventDefault();
     socket.emit('acceptedJob',e.path[0].childNodes[0].defaultValue);
   }
+});
+socket.on('storeListResponse',data=>{
+  playArea.innerHTML += `<div class="storelist" id="storelist"></div>`;
 });
 socket.on('dismissJobList',()=>{
   let joblist = document.getElementById('joblist');
