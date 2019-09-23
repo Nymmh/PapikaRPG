@@ -20,6 +20,7 @@ function storeListing(){
     else playArea.innerHTML += `<div class="joblist" id="storelist">
     <button id="shopEntertainment" onclick="shopEntertainment()" class="AcceptJobButton">Entertainment</button>
     <button id="shopDrugs" onclick="shopDrugs()" class="AcceptJobButton">Drugs</button>
+    <button id="shopFood" onclick="shopFood()" class="AcceptJobButton">Food</button>
     </div>`;
 }
 function shopEntertainment(){
@@ -29,4 +30,8 @@ function shopEntertainment(){
 function shopDrugs(){
     if(document.getElementById('shopRes')) document.getElementById('shopRes').parentNode.removeChild(document.getElementById('shopRes'));
     socket.emit('requestDrugShop');
+}
+function shopFood(){
+    if(document.getElementById('shopRes')) document.getElementById('shopRes').parentNode.removeChild(document.getElementById('shopRes'));
+    socket.emit('requestFoodShop');
 }

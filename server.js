@@ -86,6 +86,9 @@ io.on('connection',function (socket){
     socket.on('requestDrugShop',()=>{
         store.requestDrugShop(socket);
     });
+    socket.on('requestFoodShop',()=>{
+        store.requestFoodShop(socket);
+    });
     socket.on('butItem',data=>{
         store.buyItem(data,socket);
     });
