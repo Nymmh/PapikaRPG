@@ -17,7 +17,7 @@ let {db} = require('./closed/config.js'),
     chat = require('./events/chat.js'),
     jobs = require('./events/jobs.js'),
     autocheck = require('./closed/workAutoChecker.js'),
-    sleep = require('./events/player.js'),
+    player = require('./events/player.js'),
     store = require('./events/store.js');
 
 try{
@@ -78,7 +78,7 @@ io.on('connection',function (socket){
         jobs.requestWork(socket,SOCKET_LIST);
     });
     socket.on('requestSleep',()=>{
-        sleep.requestSleep(socket);
+        player.requestSleep(socket);
     });
     socket.on('requestEntertainmentShop',()=>{
         store.requestEntertainmentShop(socket);
@@ -91,6 +91,12 @@ io.on('connection',function (socket){
     });
     socket.on('butItem',data=>{
         store.buyItem(data,socket);
+    });
+    socket.on('requestInventoryFood',()=>{
+        player.requestInvetoryFood(socket);
+    });
+    socket.on('eatItem',data=>{
+        player.eatItem(socket,data);
     });
 });
 

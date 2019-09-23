@@ -170,6 +170,18 @@ body{
 #storeListing:focus{
     outline: none;
 }
+#eatListing{
+    margin-top: .5rem;
+    left: 80%;
+    position: relative;
+    max-width: 9rem;
+    top:10.5rem;
+    background: transparent;
+    border: none;
+}
+#eatListing:focus{
+    outline: none;
+}
 .joblist{
     width: 100%;
     background: rgb(43,43,43,.8);

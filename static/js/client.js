@@ -59,6 +59,7 @@ socket.on('changelogin',data=>{
     playArea.innerHTML += `<button id="workButton" onclick="workButton()">Work</button>`;
     playArea.innerHTML += `<button id="sleepButton" onclick="sleepButton()">Sleep</button>`;
     playArea.innerHTML += `<button id="storeListing" onclick="storeListing()">Store</button>`;
+    playArea.innerHTML += `<button id="eatListing" onclick="eatListing()">Eat</button>`;
   }else{
     let clientShort = document.getElementById('clientShort');
     clientShort.style.display = "none";
@@ -144,7 +145,6 @@ socket.on('updateClientShort',(data)=>{
 socket.on('shopReponse',data=>{
   playArea.innerHTML += `<div class="joblist" id="shopRes"></div>`;
   let shopRes = document.getElementById('shopRes');
-  console.log(data);
   for(let r in data){
     let id = data[r].id,
         name = data[r].name,
@@ -171,5 +171,29 @@ socket.on('shopReponse',data=>{
     let itemid = e.path[0].childNodes[0].defaultValue,
         amount = e.path[0].childNodes[1].value;
     socket.emit('butItem',{itemid,amount});
+  }
+});
+socket.on('foodInventoryResponse',data=>{
+  playArea.innerHTML += `<div class="joblist" id="foodInventoryRes"></div>`;
+  let foodInventoryRes = document.getElementById('foodInventoryRes');
+  for(let j in data){
+    let type = data[j].type,
+        name = data[j].item,
+        amount = data[j].amount,
+        buttonText = "Eat";
+    if(type == "drug"){
+      buttonText = "Use";
+    }
+    foodInventoryRes.innerHTML += `<div class="shopres"><p>${name}</p><p>Amount: ${amount}</p><form id="inventoryEat${j}" name="inventoryEat"><input type="text" id="item" value="${name}" style="display:none"><input type="text" id="type" value="${type}" style="display:none"><input type="submit" value="${buttonText}" class="AcceptJobButton"></form></div>`;
+    let eatForms = document.getElementsByName('inventoryEat');
+    for(let k=0;k<eatForms.length;k++){
+      eatForms[k].addEventListener('submit',eatFormsListener);
+    }
+    function eatFormsListener(e){
+      e.preventDefault();
+      let item = e.path[0].childNodes[0].defaultValue,
+          type = e.path[0].childNodes[1].defaultValue;
+      socket.emit('eatItem',{item:item,type:type});
+    }
   }
 });

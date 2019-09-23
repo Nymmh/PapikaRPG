@@ -23,6 +23,11 @@ function storeListing(){
     <button id="shopFood" onclick="shopFood()" class="AcceptJobButton">Food</button>
     </div>`;
 }
+function eatListing(){
+    if(document.getElementById('foodInventoryRes')) document.getElementById('foodInventoryRes').parentNode.removeChild(document.getElementById('foodInventoryRes'));
+    else socket.emit('requestInventoryFood');
+    
+}
 function shopEntertainment(){
     if(document.getElementById('shopRes')) document.getElementById('shopRes').parentNode.removeChild(document.getElementById('shopRes'));
     socket.emit('requestEntertainmentShop');
