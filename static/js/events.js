@@ -16,5 +16,17 @@ function sleepButton(){
 }
 function storeListing(){
     if(document.getElementById('storelist')) document.getElementById('storelist').parentNode.removeChild(document.getElementById('storelist'));
-    else socket.emit('requestStoreList');
+    if(document.getElementById('shopRes')) document.getElementById('shopRes').parentNode.removeChild(document.getElementById('shopRes'));
+    else playArea.innerHTML += `<div class="joblist" id="storelist">
+    <button id="shopEntertainment" onclick="shopEntertainment()" class="AcceptJobButton">Entertainment</button>
+    <button id="shopDrugs" onclick="shopDrugs()" class="AcceptJobButton">Drugs</button>
+    </div>`;
+}
+function shopEntertainment(){
+    if(document.getElementById('shopRes')) document.getElementById('shopRes').parentNode.removeChild(document.getElementById('shopRes'));
+    socket.emit('requestEntertainmentShop');
+}
+function shopDrugs(){
+    if(document.getElementById('shopRes')) document.getElementById('shopRes').parentNode.removeChild(document.getElementById('shopRes'));
+    socket.emit('requestDrugShop');
 }

@@ -158,6 +158,18 @@ body{
 #sleepButton:focus{
     outline: none;
 }
+#storeListing{
+    margin-top: .5rem;
+    left: 83%;
+    position: relative;
+    max-width: 9rem;
+    top:8rem;
+    background: transparent;
+    border: none;
+}
+#storeListing:focus{
+    outline: none;
+}
 .joblist{
     width: 100%;
     background: rgb(43,43,43,.8);
@@ -168,6 +180,8 @@ body{
     display: inline-grid;
     grid-template-columns: repeat(4,1fr);
     column-gap: 5rem;
+    max-height: 63.5rem;
+    overflow-y: auto;
 }
 .AcceptJobButton{
     border: none;
@@ -177,4 +191,21 @@ body{
     letter-spacing: 1px;
     padding: 4px 7px;
     font-weight: bolder;
+}
+.shopres{
+    max-width: 250px;
+    font-size: 1.5rem;
+    color: aliceblue;
+    padding: 10px;
+    border-radius: 10px;
+    background: #232b38;
+    margin: 1rem;
+}
+.itemAmount{
+    width: 10rem;
+    background: rgb(43,43,43,.8);
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-right: 5px;
 }

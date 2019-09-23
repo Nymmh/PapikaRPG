@@ -56,9 +56,9 @@ socket.on('changelogin',data=>{
     ${addRebalTrain}`;
 
     playArea.innerHTML += `<button id="jobListing" onclick="jobListing()">Job Listings</button>`;
-    playArea.innerHTML += `<button id="storeListing" onclick="storeListing()">Store</button>`;
     playArea.innerHTML += `<button id="workButton" onclick="workButton()">Work</button>`;
     playArea.innerHTML += `<button id="sleepButton" onclick="sleepButton()">Sleep</button>`;
+    playArea.innerHTML += `<button id="storeListing" onclick="storeListing()">Store</button>`;
   }else{
     let clientShort = document.getElementById('clientShort');
     clientShort.style.display = "none";
@@ -104,9 +104,6 @@ socket.on('jobListResponse',data=>{
     socket.emit('acceptedJob',e.path[0].childNodes[0].defaultValue);
   }
 });
-socket.on('storeListResponse',data=>{
-  playArea.innerHTML += `<div class="storelist" id="storelist"></div>`;
-});
 socket.on('dismissJobList',()=>{
   let joblist = document.getElementById('joblist');
   joblist.parentNode.removeChild(joblist);
@@ -143,4 +140,36 @@ socket.on('updateClientShort',(data)=>{
   ${addGang}
   ${addSick}
   ${addRebalTrain}`;
+});
+socket.on('shopReponse',data=>{
+  playArea.innerHTML += `<div class="joblist" id="shopRes"></div>`;
+  let shopRes = document.getElementById('shopRes');
+  console.log(data);
+  for(let r in data){
+    let id = data[r].id,
+        name = data[r].name,
+        price = data[r].price,
+        happiness = data[r].happiness,
+        hunger = data[r].hunger,
+        sleep = data[r].sleep,
+        hungerPrint = '',
+        sleepPrint = '';
+    if(hunger){
+      hungerPrint = `<p>Hunger: ${hunger}</p>`;
+    }
+    if(sleep){
+      sleepPrint = `<p>Sleep: ${sleep}</p>`;
+    }
+    shopRes.innerHTML += `<div class="shopres"><p>${name}</p><p>Price: ${price}</p><p>Happiness: ${happiness}</p>${hungerPrint}${sleepPrint}<form id="shopItem${r}" name="shopItem"><input type="text" id="item" value="${id}" style="display:none"><input type="number" id="itemAmount" min="1" required placeholder="Amount" value="1" class="itemAmount"><input type="submit" value="Buy" class="AcceptJobButton"></form></div>`;
+  }
+  let shopForms = document.getElementsByName('shopItem');
+  for(let k=0;k<shopForms.length;k++){
+    shopForms[k].addEventListener('submit',shopFormsListener);
+  }
+  function shopFormsListener(e){
+    e.preventDefault();
+    let itemid = e.path[0].childNodes[0].defaultValue,
+        amount = e.path[0].childNodes[1].value;
+    socket.emit('butItem',{itemid,amount});
+  }
 });

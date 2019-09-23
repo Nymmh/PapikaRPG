@@ -80,8 +80,14 @@ io.on('connection',function (socket){
     socket.on('requestSleep',()=>{
         sleep.requestSleep(socket);
     });
-    socket.on('requestStoreList',()=>{
-        store.requestStoreList(socket);
+    socket.on('requestEntertainmentShop',()=>{
+        store.requestEntertainmentShop(socket);
+    });
+    socket.on('requestDrugShop',()=>{
+        store.requestDrugShop(socket);
+    });
+    socket.on('butItem',data=>{
+        store.buyItem(data,socket);
     });
 });
 

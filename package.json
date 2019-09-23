@@ -19,6 +19,7 @@
     "mongoose": "^5.7.0",
     "node-fetch": "^2.6.0",
     "nodemon": "^1.19.2",
+    "replaceall": "^0.1.6",
     "request": "^2.88.0",
     "socket.io": "^2.2.0",
     "socket.io-cookie-parser": "^1.0.0"
