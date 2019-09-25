@@ -1,4 +1,4 @@
-let socket = io.connect('http://localhost:5000'),
+let socket = io.connect('http://70.77.208.186:5000'),
     loadingimg = document.getElementById('loadingScreen'),
     innerPlayerList = document.getElementById('innerPlayerList'),
     globalchat = document.getElementById('global_chat_log'),
@@ -181,9 +181,7 @@ socket.on('foodInventoryResponse',data=>{
         name = data[j].item,
         amount = data[j].amount,
         buttonText = "Eat";
-    if(type == "drug"){
-      buttonText = "Use";
-    }
+    if(type == "drug") buttonText = "Use";
     foodInventoryRes.innerHTML += `<div class="shopres"><p>${name}</p><p>Amount: ${amount}</p><form id="inventoryEat${j}" name="inventoryEat"><input type="text" id="item" value="${name}" style="display:none"><input type="text" id="type" value="${type}" style="display:none"><input type="submit" value="${buttonText}" class="AcceptJobButton"></form></div>`;
     let eatForms = document.getElementsByName('inventoryEat');
     for(let k=0;k<eatForms.length;k++){
