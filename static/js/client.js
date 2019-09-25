@@ -1,4 +1,5 @@
-let socket = io.connect('http://70.77.208.186:5000'),
+let //socket = io.connect('http://70.77.208.186:5000'),
+    socket = io.connect('http://localhost:5000')
     loadingimg = document.getElementById('loadingScreen'),
     innerPlayerList = document.getElementById('innerPlayerList'),
     globalchat = document.getElementById('global_chat_log'),
