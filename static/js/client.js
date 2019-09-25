@@ -197,3 +197,6 @@ socket.on('foodInventoryResponse',data=>{
     }
   }
 });
+socket.on('refreshEatMenu',()=>{
+  eatListingRefresh();
+});

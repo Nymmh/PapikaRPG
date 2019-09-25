@@ -26,7 +26,10 @@ function storeListing(){
 function eatListing(){
     if(document.getElementById('foodInventoryRes')) document.getElementById('foodInventoryRes').parentNode.removeChild(document.getElementById('foodInventoryRes'));
     else socket.emit('requestInventoryFood');
-    
+}
+function eatListingRefresh(){
+    document.getElementById('foodInventoryRes').parentNode.removeChild(document.getElementById('foodInventoryRes'));
+    socket.emit('requestInventoryFood');
 }
 function shopEntertainment(){
     if(document.getElementById('shopRes')) document.getElementById('shopRes').parentNode.removeChild(document.getElementById('shopRes'));

@@ -23,5 +23,8 @@ module.exports = {
     },
     msgAlert(data,socket){
         socket.emit('alert',data);
+    },
+    refreshEatMenu(socket){
+        socket.emit('refreshEatMenu');
     }
 }
