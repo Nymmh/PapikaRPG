@@ -103,7 +103,7 @@ socket.on('jobListResponse',data=>{
   }
   function jobFormsListener(e){
     e.preventDefault();
-    socket.emit('acceptedJob',e.path[0].childNodes[0].defaultValue);
+    socket.emit('acceptedJob',e.target[0].defaultValue);
   }
 });
 socket.on('dismissJobList',()=>{
@@ -169,8 +169,8 @@ socket.on('shopReponse',data=>{
   }
   function shopFormsListener(e){
     e.preventDefault();
-    let itemid = e.path[0].childNodes[0].defaultValue,
-        amount = e.path[0].childNodes[1].value;
+    let itemid = e.target[0].defaultValue,
+        amount = e.target[1].value;
     socket.emit('butItem',{itemid,amount});
   }
 });
@@ -190,8 +190,8 @@ socket.on('foodInventoryResponse',data=>{
     }
     function eatFormsListener(e){
       e.preventDefault();
-      let item = e.path[0].childNodes[0].defaultValue,
-          type = e.path[0].childNodes[1].defaultValue;
+      let item = e.target[0].defaultValue,
+          type = e.target[1].defaultValue;
       socket.emit('eatItem',{item:item,type:type});
     }
   }
