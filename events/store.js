@@ -10,6 +10,9 @@ module.exports = {
     requestFoodShop(socket){
         store.getFood(socket);
     },
+    requestBedShop(socket){
+        store.getBed(socket);
+    },
     buyItem(data,socket){
         store.buyItemFromDB(data,socket);
     }

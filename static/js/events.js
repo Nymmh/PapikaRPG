@@ -21,6 +21,7 @@ function storeListing(){
     <button id="shopEntertainment" onclick="shopEntertainment()" class="AcceptJobButton">Entertainment</button>
     <button id="shopDrugs" onclick="shopDrugs()" class="AcceptJobButton">Drugs</button>
     <button id="shopFood" onclick="shopFood()" class="AcceptJobButton">Food</button>
+    <button id="shopBeds" onclick="shopBeds()" class="AcceptJobButton">Beds</button>
     </div>`;
 }
 function eatListing(){
@@ -42,4 +43,8 @@ function shopDrugs(){
 function shopFood(){
     if(document.getElementById('shopRes')) document.getElementById('shopRes').parentNode.removeChild(document.getElementById('shopRes'));
     socket.emit('requestFoodShop');
+}
+function shopBeds(){
+    if(document.getElementById('shopRes')) document.getElementById('shopRes').parentNode.removeChild(document.getElementById('shopRes'));
+    socket.emit('requestBedShop');
 }

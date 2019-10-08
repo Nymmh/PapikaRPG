@@ -153,15 +153,24 @@ socket.on('shopReponse',data=>{
         happiness = data[r].happiness,
         hunger = data[r].hunger,
         sleep = data[r].sleep,
+        cooldown = data[r].cooldown,
         hungerPrint = '',
-        sleepPrint = '';
+        sleepPrint = '',
+        happinessrPrint = '',
+        cooldownPrint = '';
+    if(happiness){
+      happinessrPrint = `<p>Happiness: ${happiness}</p>`;
+    }
     if(hunger){
       hungerPrint = `<p>Hunger: ${hunger}</p>`;
     }
     if(sleep){
       sleepPrint = `<p>Sleep: ${sleep}</p>`;
     }
-    shopRes.innerHTML += `<div class="shopres"><p>${name}</p><p>Price: ${price}</p><p>Happiness: ${happiness}</p>${hungerPrint}${sleepPrint}<form id="shopItem${r}" name="shopItem"><input type="text" id="item" value="${id}" style="display:none"><input type="number" id="itemAmount" min="1" required placeholder="Amount" value="1" class="itemAmount"><input type="submit" value="Buy" class="AcceptJobButton"></form></div>`;
+    if(cooldown){
+      cooldownPrint = `<p>Cooldown: ${cooldown}s</p>`;
+    }
+    shopRes.innerHTML += `<div class="shopres"><p>${name}</p><p>Price: ${price}</p>${happinessrPrint}${hungerPrint}${sleepPrint}${cooldownPrint}<form id="shopItem${r}" name="shopItem"><input type="text" id="item" value="${id}" style="display:none"><input type="number" id="itemAmount" min="1" required placeholder="Amount" value="1" class="itemAmount"><input type="submit" value="Buy" class="AcceptJobButton"></form></div>`;
   }
   let shopForms = document.getElementsByName('shopItem');
   for(let k=0;k<shopForms.length;k++){
