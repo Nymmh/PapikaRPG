@@ -28,7 +28,7 @@ module.exports = {
                 atlis.testUser(socket,Discordid,username,avatar,discriminator);
             for(let i in SOCKET_LIST){
               SOCKET_LIST[i].emit('addToChatGlobal',`System: ${socket.nickname} connected`);
-              SOCKET_LIST[i].emit('addToPlayerList',socket.nickname);
+              SOCKET_LIST[i].emit('addToPlayerList',{nickname:socket.nickname,id:Discordid});
             }
         } 
       }

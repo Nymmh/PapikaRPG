@@ -101,6 +101,9 @@ io.on('connection',function (socket){
     socket.on('eatItem',data=>{
         player.eatItem(socket,data);
     });
+    socket.on('requestPeer',data=>{
+        player.requestPeer(socket,data);
+    });
 });
 
 let port = process.env.PORT || 5000;

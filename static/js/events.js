@@ -1,8 +1,15 @@
-let chatadd = document.getElementById('chatadd');
+let chatadd = document.getElementById('chatadd'),
+    peerShort = document.getElementById('peerShort');
 chatadd.onsubmit = e=>{
     e.preventDefault();
     socket.emit('sendMsgToServer', chattext.value);
     chattext.value = '';
+}
+peerShort.onclick = ()=>{
+    peerShort.style.display = "none";
+}
+function requestPlayerFromList(buttonVal){
+    socket.emit('requestPeer',buttonVal.value);
 }
 function jobListing(){
     if(document.getElementById('joblist')) document.getElementById('joblist').parentNode.removeChild(document.getElementById('joblist'));

@@ -19,7 +19,8 @@ socket.on('joinPlayerList',data=>{
   }
 });
 socket.on('addToPlayerList',data=>{
-  innerPlayerList.innerHTML += `<div>${data}</div>`;
+  innerPlayerList.innerHTML += `<div><button class="playerListButton" id="playerListButton" value="${data.id}" onclick="requestPlayerFromList(this)">${data.nickname}</button></div>`;
+  //innerPlayerList.innerHTML += `<div>${data}</div>`;
 });
 socket.on('alert',(data)=>{
   alert(data);
@@ -65,6 +66,20 @@ socket.on('changelogin',data=>{
     let clientShort = document.getElementById('clientShort');
     clientShort.style.display = "none";
   }
+});
+socket.on('peerData',data=>{
+  console.log(data)
+  let peerShort = document.getElementById('peerShort');
+  let addSick = '',
+      addGang = '';
+  if(data.sick)addSick = `<div id="playerSick"><p>Sick</p></div>`;
+  if(data.gang)addGang = `<div id="playerGang"><p>Gang: ${data.gang}</p></div>`;
+  peerShort.innerHTML = `<img src="https://cdn.discordapp.com/avatars/${data.discordid}/${data.avatar}" alt="avatar for ${data.username}" class="shortClientImg"><span class="shortClientName">${data.username}</span>
+    <div id="playerMoney"><p>Cocona's: <span>${data.balance}</span></p></div>
+    <div id="playerJob"><p>Job: <span>${data.job}</span></p></div>
+  ${addGang}
+  ${addSick}`;
+  peerShort.style.display = "block";
 });
 socket.on('workCoolDown',data=>{
   if(document.getElementById('workButton')){
