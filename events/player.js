@@ -2,7 +2,8 @@ let atlis = require('../closed/atlis'),
     sleep = require('../closed/sleep.js'),
     handleSocket = require('../handlers/handleSocket.js'),
     inventory = require('../closed/inventory.js'),
-    playerRef = require('../closed/playerRef.js');
+    playerRef = require('../closed/playerRef.js'),
+    give = require('../closed/give.js');
 module.exports = {
     requestSleep(socket){
         if(socket.sleep==100){
@@ -18,5 +19,8 @@ module.exports = {
     },
     requestPeer(socket,data){
         playerRef.findPeer(socket,data);
+    },
+    giveMoney(socket,data){
+        give.giveMoneyToPeer(socket,data);
     }
 }

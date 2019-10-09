@@ -204,6 +204,7 @@ body{
     column-gap: 5rem;
     max-height: 63.5rem;
     overflow-y: auto;
+    grid-row-gap: 2rem;
 }
 .AcceptJobButton{
     border: none;

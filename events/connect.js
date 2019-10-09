@@ -43,7 +43,7 @@ module.exports = {
       for(let i in SOCKET_LIST){
           if(socket.nickname != null){
             for(let i in clients){
-              if(socket.nickname == clients[i]){
+              if(socket.nickname == clients[i].nickname){
                 delete clients[i];
               }
             }

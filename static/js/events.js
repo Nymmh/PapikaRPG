@@ -11,6 +11,18 @@ peerShort.onclick = ()=>{
 function requestPlayerFromList(buttonVal){
     socket.emit('requestPeer',buttonVal.value);
 }
+function givePlayerItem(buttonVal){
+    let userid = buttonVal.value;
+    peerShort.style.display = "block";
+    if(document.getElementById('givelist')) document.getElementById('givelist').parentNode.removeChild(document.getElementById('givelist'));
+    playArea.innerHTML += `<div class="joblist" id="givelist">
+    <label for="itemAmount">Cocona's</label><input type="number" id="itemAmount" min="1" required placeholder="Amount" value="1" class="itemAmount"><button class="AcceptJobButton" onclick="giveMoney()">Give</button>
+    <button id="giveFood" onclick="giveFood()" class="AcceptJobButton">Food</button>
+    <button id="giveDrugs" onclick="giveDrugs()" class="AcceptJobButton">Drugs</button>
+    <button id="giveWeapon" onclick="giveWeapon()" class="AcceptJobButton">Weapons</button>
+    <button id="giveClose" onclick="giveClose()" class="AcceptJobButton">Close</button>
+    </div>`;
+}
 function jobListing(){
     if(document.getElementById('joblist')) document.getElementById('joblist').parentNode.removeChild(document.getElementById('joblist'));
     else socket.emit('requestJobListing');
@@ -54,4 +66,12 @@ function shopFood(){
 function shopBeds(){
     if(document.getElementById('shopRes')) document.getElementById('shopRes').parentNode.removeChild(document.getElementById('shopRes'));
     socket.emit('requestBedShop');
+}
+function giveClose(){
+    if(document.getElementById('givelist')) document.getElementById('givelist').parentNode.removeChild(document.getElementById('givelist'));
+}
+function giveMoney(){
+    let itemAmount = document.getElementById('itemAmount');
+    socket.emit('requestGiveMoney',itemAmount.value);
+    if(document.getElementById('givelist')) document.getElementById('givelist').parentNode.removeChild(document.getElementById('givelist'));
 }

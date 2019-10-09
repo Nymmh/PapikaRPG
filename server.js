@@ -49,12 +49,17 @@ io.on('connection',function (socket){
         let rooms = Object.keys(socket.rooms);
     });
     for (socketID in io.nsps['/'].adapter.rooms['Lobby'].sockets) {
-        let nickname = io.nsps['/'].connected[socketID].nickname;
+        let nickname = io.nsps['/'].connected[socketID].nickname,
+            disID = io.nsps['/'].connected[socketID].Discordid;
         if(nickname != null){
-            if(clients.includes(nickname)){
-                continue;
-            }else{
-                clients.push(nickname);
+            let newuser = true;
+            for(let k in clients){
+                if(clients[k].nickname == nickname){
+                    newuser = false;
+                }
+            }
+            if(newuser){
+                clients.push({nickname:nickname,id:disID});
             }
         }
     }
@@ -103,6 +108,9 @@ io.on('connection',function (socket){
     });
     socket.on('requestPeer',data=>{
         player.requestPeer(socket,data);
+    });
+    socket.on('requestGiveMoney',data=>{
+        player.giveMoney(socket,data);
     });
 });
 

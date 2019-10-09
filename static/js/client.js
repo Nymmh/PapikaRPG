@@ -14,25 +14,25 @@ function loadingScreenOff(){
 socket.on('joinPlayerList',data=>{
   for(let q in data){
     if(data[q] != null){
-      innerPlayerList.innerHTML += `<div>${data[q]}</div>`;
+      innerPlayerList.innerHTML += `<div><button class="playerListButton" id="playerListButton" value="${data[q].id}" onclick="requestPlayerFromList(this)">${data[q].nickname}</button></div>`;
     }
   }
 });
 socket.on('addToPlayerList',data=>{
   innerPlayerList.innerHTML += `<div><button class="playerListButton" id="playerListButton" value="${data.id}" onclick="requestPlayerFromList(this)">${data.nickname}</button></div>`;
-  //innerPlayerList.innerHTML += `<div>${data}</div>`;
 });
 socket.on('alert',(data)=>{
   alert(data);
 });
 socket.on('addToChatGlobal',data=>{
   globalchat.innerHTML += `<div><p>${data}</p></div>`;
+  globalchat.scrollTop = globalchat.scrollHeight;
 });
 socket.on('updatePlayerList',data=>{
   innerPlayerList.innerHTML = '';
   for(let q in data){
     if(data[q] != null){
-      innerPlayerList.innerHTML += `<div>${data[q]}</div>`;
+      innerPlayerList.innerHTML += `<div><button class="playerListButton" id="playerListButton" value="${data[q].id}" onclick="requestPlayerFromList(this)">${data[q].nickname}</button></div>`;
     }
   }
 });
@@ -68,7 +68,6 @@ socket.on('changelogin',data=>{
   }
 });
 socket.on('peerData',data=>{
-  console.log(data)
   let peerShort = document.getElementById('peerShort');
   let addSick = '',
       addGang = '';
@@ -78,7 +77,8 @@ socket.on('peerData',data=>{
     <div id="playerMoney"><p>Cocona's: <span>${data.balance}</span></p></div>
     <div id="playerJob"><p>Job: <span>${data.job}</span></p></div>
   ${addGang}
-  ${addSick}`;
+  ${addSick}
+  <div><button class="playerListButton" id="giveButton" value="${data.discordid}" onclick="givePlayerItem(this)">Give</button></div>`;
   peerShort.style.display = "block";
 });
 socket.on('workCoolDown',data=>{
