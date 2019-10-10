@@ -110,7 +110,10 @@ io.on('connection',function (socket){
         player.requestPeer(socket,data);
     });
     socket.on('requestGiveMoney',data=>{
-        player.giveMoney(socket,data);
+        player.giveMoney(socket,data,SOCKET_LIST);
+    });
+    socket.on('storePeerIdForGive',data=>{
+        player.storePeerid(socket,data);
     });
 });
 

@@ -12,7 +12,8 @@ function requestPlayerFromList(buttonVal){
     socket.emit('requestPeer',buttonVal.value);
 }
 function givePlayerItem(buttonVal){
-    let userid = buttonVal.value;
+    var userid = buttonVal.value;
+    socket.emit('storePeerIdForGive',userid);
     peerShort.style.display = "block";
     if(document.getElementById('givelist')) document.getElementById('givelist').parentNode.removeChild(document.getElementById('givelist'));
     playArea.innerHTML += `<div class="joblist" id="givelist">

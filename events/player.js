@@ -20,7 +20,10 @@ module.exports = {
     requestPeer(socket,data){
         playerRef.findPeer(socket,data);
     },
-    giveMoney(socket,data){
-        give.giveMoneyToPeer(socket,data);
+    storePeerid(socket,data){
+        socket.lastGiveID = data;
+    },
+    giveMoney(socket,data,SOCKET_LIST){
+        if(socket.lastGiveID)give.giveMoneyToPeer(socket,data,SOCKET_LIST);
     }
 }
