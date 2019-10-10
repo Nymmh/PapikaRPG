@@ -158,6 +158,10 @@ socket.on('updateClientShort',(data)=>{
   ${addSick}
   ${addRebalTrain}`;
 });
+socket.on('updateBalancePeer',data=>{
+  let playerMoney = document.getElementById('playerMoney');
+  playerMoney.innerHTML = `<p>Cocona's: <span>${data}</span></p>`;
+});
 socket.on('shopReponse',data=>{
   playArea.innerHTML += `<div class="joblist" id="shopRes"></div>`;
   let shopRes = document.getElementById('shopRes');

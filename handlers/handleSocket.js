@@ -26,5 +26,5 @@ module.exports = {
     },
     refreshEatMenu(socket){
         socket.emit('refreshEatMenu');
-    }
+    },
 }
