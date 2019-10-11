@@ -227,3 +227,25 @@ socket.on('foodInventoryResponse',data=>{
 socket.on('refreshEatMenu',()=>{
   eatListingRefresh();
 });
+socket.on('giveFoodInventoryResponse',data=>{
+  playArea.innerHTML += `<div class="joblist" id="foodInventoryRes"></div>`;
+  let foodInventoryRes = document.getElementById('foodInventoryRes');
+  for(let j in data){
+    let type = data[j].type,
+        name = data[j].item,
+        amount = data[j].amount,
+        buttonText = "Give";
+    foodInventoryRes.innerHTML += `<div class="shopres"><p>${name}</p><p>Amount: ${amount}</p><form id="inventoryGive${j}" name="inventoryGive"><input type="text" id="item" value="${name}" style="display:none"><input type="text" id="type" value="${type}" style="display:none"><input type="number" id="itemAmount" min="1" required placeholder="Amount" value="1" class="itemAmount"><input type="submit" value="${buttonText}" class="AcceptJobButton"></form></div>`;
+    let giveForms = document.getElementsByName('inventoryGive');
+    for(let k=0;k<giveForms.length;k++){
+      giveForms[k].addEventListener('submit',giveFormsListener);
+    }
+    function giveFormsListener(e){
+      e.preventDefault();
+      let item = e.target[0].defaultValue,
+          type = e.target[1].defaultValue,
+          giveAmount = e.target[2].value;
+      socket.emit('giveItem',{item:item,type:type,amount:giveAmount});
+    }
+  }
+});

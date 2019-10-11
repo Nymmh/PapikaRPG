@@ -76,3 +76,7 @@ function giveMoney(){
     socket.emit('requestGiveMoney',itemAmount.value);
     if(document.getElementById('givelist')) document.getElementById('givelist').parentNode.removeChild(document.getElementById('givelist'));
 }
+function giveFood(){
+    socket.emit('requestGiveFoodList');
+    if(document.getElementById('givelist')) document.getElementById('givelist').parentNode.removeChild(document.getElementById('givelist'));
+}

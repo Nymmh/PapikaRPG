@@ -25,5 +25,11 @@ module.exports = {
     },
     giveMoney(socket,data,SOCKET_LIST){
         if(socket.lastGiveID)give.giveMoneyToPeer(socket,data,SOCKET_LIST);
+    },
+    requestGiveFood(socket,SOCKET_LIST){
+        if(socket.lastGiveID)inventory.requestFoodInvForGive(socket,SOCKET_LIST);
+    },
+    requestGiveItem(socket,data,SOCKET_LIST){
+        if(socket.lastGiveID)give.giveItemToPeer(socket,data,SOCKET_LIST);
     }
 }

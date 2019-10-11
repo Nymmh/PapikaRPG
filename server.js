@@ -115,6 +115,12 @@ io.on('connection',function (socket){
     socket.on('storePeerIdForGive',data=>{
         player.storePeerid(socket,data);
     });
+    socket.on('requestGiveFoodList',()=>{
+        player.requestGiveFood(socket,SOCKET_LIST);
+    });
+    socket.on('giveItem',data=>{
+        player.requestGiveItem(socket,data,SOCKET_LIST);
+    });
 });
 
 let port = process.env.PORT || 5000;
