@@ -29,6 +29,9 @@ module.exports = {
     requestGiveFood(socket,SOCKET_LIST){
         if(socket.lastGiveID)inventory.requestFoodInvForGive(socket,SOCKET_LIST);
     },
+    requestGiveDrug(socket,SOCKET_LIST){
+        if(socket.lastGiveID)inventory.requestDrugInvForGiv(socket,SOCKET_LIST);
+    },
     requestGiveItem(socket,data,SOCKET_LIST){
         if(socket.lastGiveID)give.giveItemToPeer(socket,data,SOCKET_LIST);
     }

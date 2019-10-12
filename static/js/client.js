@@ -248,4 +248,6 @@ socket.on('giveFoodInventoryResponse',data=>{
       socket.emit('giveItem',{item:item,type:type,amount:giveAmount});
     }
   }
+socket.on('forceCloseMenues',()=>{
+  if(document.getElementById('foodInventoryRes'))document.getElementById('foodInventoryRes').parentNode.removeChild(document.getElementById('foodInventoryRes'));
 });

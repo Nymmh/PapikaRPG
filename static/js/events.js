@@ -80,3 +80,7 @@ function giveFood(){
     socket.emit('requestGiveFoodList');
     if(document.getElementById('givelist')) document.getElementById('givelist').parentNode.removeChild(document.getElementById('givelist'));
 }
+function giveDrugs(){
+    socket.emit('requestGiveDrugList');
+    if(document.getElementById('givelist')) document.getElementById('givelist').parentNode.removeChild(document.getElementById('givelist'));
+}
