@@ -124,6 +124,12 @@ io.on('connection',function (socket){
     socket.on('giveItem',data=>{
         player.requestGiveItem(socket,data,SOCKET_LIST);
     });
+    socket.on('requestWantedList',()=>{
+        player.requestWantedList(socket);
+    });
+    socket.on('policeStore',()=>{
+        store.requestPoliceStore(socket);
+    });
 });
 
 let port = process.env.PORT || 5000;

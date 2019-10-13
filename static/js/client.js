@@ -43,10 +43,15 @@ socket.on('changelogin',data=>{
     loginDiv.parentNode.removeChild(loginDiv);
     let addSick = '',
         addRebalTrain = '',
-        addGang = '';
+        addGang = '',
+        addTree = '';
     if(data.sick)addSick = `<div id="playerSick"><p>Sick</p></div>`;
     if(data.rebal_training)addRebalTrain = `<div id="playerRebal"><p>Rebal Training</p></div>`;
     if(data.gang)addGang = `<div id="playerGang"><p>Gang: ${data.gang}</p></div>`;
+    if(data.jobTree){
+      if(data.jobTree == "Police")addTree = `<button id="policeWanted" class="playerListButton" onclick="wantedList()">Wanted List</button>
+      <button class="playerListButton" onclick="policeStore()">Police Store</button>`;
+    }
     clientShort.innerHTML += `<img src="https://cdn.discordapp.com/avatars/${data.discordid}/${data.avatar}" alt="avatar for ${data.username}" class="shortClientImg"><span class="shortClientName">${data.username}</span>
     <div id="playerMoney"><p>Cocona's: <span>${data.money}</span></p></div>
     <div id="playerJob"><p>Job: <span>${data.job}</span></p></div>
@@ -62,6 +67,7 @@ socket.on('changelogin',data=>{
     playArea.innerHTML += `<button id="sleepButton" onclick="sleepButton()">Sleep</button>`;
     playArea.innerHTML += `<button id="storeListing" onclick="storeListing()">Store</button>`;
     playArea.innerHTML += `<button id="eatListing" onclick="eatListing()">Eat</button>`;
+    playArea.innerHTML += addTree;
   }else{
     let clientShort = document.getElementById('clientShort');
     clientShort.style.display = "none";
@@ -248,6 +254,7 @@ socket.on('giveFoodInventoryResponse',data=>{
       socket.emit('giveItem',{item:item,type:type,amount:giveAmount});
     }
   }
+});
 socket.on('forceCloseMenues',()=>{
   if(document.getElementById('foodInventoryRes'))document.getElementById('foodInventoryRes').parentNode.removeChild(document.getElementById('foodInventoryRes'));
 });

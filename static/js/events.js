@@ -84,3 +84,9 @@ function giveDrugs(){
     socket.emit('requestGiveDrugList');
     if(document.getElementById('givelist')) document.getElementById('givelist').parentNode.removeChild(document.getElementById('givelist'));
 }
+function wantedList(){
+    socket.emit('requestWantedList');
+}
+function policeStore(){
+    socket.emit('requestPoliceStore');
+}

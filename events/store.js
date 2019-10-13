@@ -15,5 +15,8 @@ module.exports = {
     },
     buyItem(data,socket){
         store.buyItemFromDB(data,socket);
+    },
+    requestPoliceStore(socket){
+        store.getPoliceStore(socket);
     }
 }

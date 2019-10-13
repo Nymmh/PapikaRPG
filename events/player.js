@@ -3,7 +3,8 @@ let atlis = require('../closed/atlis'),
     handleSocket = require('../handlers/handleSocket.js'),
     inventory = require('../closed/inventory.js'),
     playerRef = require('../closed/playerRef.js'),
-    give = require('../closed/give.js');
+    give = require('../closed/give.js'),
+    police = require('../closed/police.js');
 module.exports = {
     requestSleep(socket){
         if(socket.sleep==100){
@@ -34,5 +35,8 @@ module.exports = {
     },
     requestGiveItem(socket,data,SOCKET_LIST){
         if(socket.lastGiveID)give.giveItemToPeer(socket,data,SOCKET_LIST);
+    },
+    requestWantedList(socket){
+        police.getWantedList(socket);
     }
 }
