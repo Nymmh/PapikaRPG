@@ -265,3 +265,19 @@ socket.on('forceCloseMenues',()=>{
 socket.on('blackmarketResponse',data=>{
   storeListingReponse(data);
 });
+socket.on('updateWeather',data=>{
+  if(document.getElementById('weather')){
+    let weatherArea = document.getElementById('weather');
+    let cloudsPrint = '',
+      humidityPrint = '';
+    if(data.clouds)cloudsPrint = `<p>Clouds: ${data.clouds}</p>`;
+    if(data.humidity)humidityPrint = `<p>Humidity: ${data.humidity}</p>`;
+    weatherArea.innerHTML = `<div>
+    <p>Type: ${data.type}</p>
+    <p>Temperature: ${data.temp}</p>
+    ${cloudsPrint}
+    ${humidityPrint}
+    <p>Wind: ${data.wind} Km/h</p>
+    </div>`;
+  }
+});

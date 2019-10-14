@@ -18,7 +18,8 @@ let {db} = require('./closed/config.js'),
     jobs = require('./events/jobs.js'),
     autocheck = require('./closed/workAutoChecker.js'),
     player = require('./events/player.js'),
-    store = require('./events/store.js');
+    store = require('./events/store.js'),
+    weather = require('./events/weather.js');
 
 try{
     mongoose.connect(db, {useNewUrlParser:true});
@@ -166,7 +167,9 @@ io.on('connection',function (socket){
 });
 
 let port = process.env.PORT || 5000;
-
+setInterval(()=>{
+    weather.generateWeather(SOCKET_LIST);
+},21600000);
 server.listen({port:port}, () => {
   console.log(`Starting server on port ${port}`);
 });

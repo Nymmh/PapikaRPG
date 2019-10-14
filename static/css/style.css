@@ -90,6 +90,15 @@ body{
     height: 50rem;
     border-radius: 6px;
 }
+#weather{
+    max-width: 250px;
+    font-size: 1.5rem;
+    color: aliceblue;
+    padding: 10px;
+    border-radius: 10px;
+    background: #232b38;
+    margin: 1rem; 
+}
 #clientShort{
     max-width: 250px;
     font-size: 1.5rem;

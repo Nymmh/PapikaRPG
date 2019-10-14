@@ -1,6 +1,7 @@
 let requets = require('request'),
     base_url = `https://discordapp.com/api/users/@me`,
-    atlis = require('../closed/atlis');
+    atlis = require('../closed/atlis'),
+    weather = require('../handlers/weatherUpdates');
 module.exports = {
     signin(socket,SOCKET_LIST){
       if(socket.request.cookies.discord_token){
@@ -26,6 +27,7 @@ module.exports = {
                 socket.gang = 0;
                 socket.police = null;
                 atlis.testUser(socket,Discordid,username,avatar,discriminator);
+                weather.requestWeather(socket);
             for(let i in SOCKET_LIST){
               SOCKET_LIST[i].emit('addToChatGlobal',`System: ${socket.nickname} connected`);
               SOCKET_LIST[i].emit('addToPlayerList',{nickname:socket.nickname,id:Discordid});
