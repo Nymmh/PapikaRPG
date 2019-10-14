@@ -127,8 +127,41 @@ io.on('connection',function (socket){
     socket.on('requestWantedList',()=>{
         player.requestWantedList(socket);
     });
-    socket.on('policeStore',()=>{
+    socket.on('requestPoliceStore',()=>{
         store.requestPoliceStore(socket);
+    });
+    socket.on('requestCivGunsSideArm',()=>{
+        store.requestCivGunsSideArm(socket);
+    });
+    socket.on('requestCivGunsSubmachine',()=>{
+        store.requestCivGunsSubmachine(socket);
+    });
+    socket.on('requestCivGunsSR',()=>{
+        store.requestCivGunsSR(socket);
+    });
+    socket.on('checkBlackMarket',()=>{
+        player.checkBlackMarket(socket);
+    });
+    socket.on('requestBlackMarketGunsSideArm',()=>{
+        store.requestBlackMarketGunsSideArm(socket);
+    });
+    socket.on('requestBlackmarketGunsSubmachine',()=>{
+        store.requestBlackmarketGunsSubmachine(socket);
+    });
+    socket.on('requestBlackmarketGunsAR',()=>{
+        store.requestBlackmarketGunsAR(socket);
+    });
+    socket.on('requestBlackmarketGunsDMR',()=>{
+        store.requestBlackmarketGunsDMR(socket);
+    });
+    socket.on('requestBlackmarketGunsSR',()=>{
+        store.requestBlackmarketGunsSR(socket);
+    });
+    socket.on('requestBlackmarketGunsExclusive',()=>{
+        store.requestBlackmarketGunsExclusive(socket);
+    });
+    socket.on('requestBlackMarketDrugs',()=>{
+        store.requestBlackMarketDrugs(socket);
     });
 });
 

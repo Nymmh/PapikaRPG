@@ -18,5 +18,35 @@ module.exports = {
     },
     requestPoliceStore(socket){
         store.getPoliceStore(socket);
+    },
+    requestCivGunsSideArm(socket){
+        store.requestCivGunsSideArm(socket);
+    },
+    requestCivGunsSubmachine(socket){
+        store.requestCivGunsSubmachine(socket);
+    },
+    requestCivGunsSR(socket){
+        store.requestCivGunsSR(socket);
+    },
+    requestBlackMarketGunsSideArm(socket){
+        store.requestBlackMarketGunsSideArm(socket);
+    },
+    requestBlackmarketGunsSubmachine(socket){
+        store.requestBlackmarketGunsSubmachine(socket);
+    },
+    requestBlackmarketGunsAR(socket){
+        store.requestBlackmarketGunsAR(socket);
+    },
+    requestBlackmarketGunsDMR(socket){
+        store.requestBlackmarketGunsDMR(socket);
+    },
+    requestBlackmarketGunsSR(socket){
+        store.requestBlackmarketGunsSR(socket);
+    },
+    requestBlackmarketGunsExclusive(socket){
+        store.requestBlackmarketGunsExclusive(socket);
+    },
+    requestBlackMarketDrugs(socket){
+        store.getBlackMarketDrugs(socket);
     }
 }

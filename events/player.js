@@ -38,5 +38,8 @@ module.exports = {
     },
     requestWantedList(socket){
         police.getWantedList(socket);
+    },
+    checkBlackMarket(socket){
+        socket.emit("blackmarketResponse",socket.foundBlackMarket);
     }
 }

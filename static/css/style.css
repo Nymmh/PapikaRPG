@@ -215,6 +215,15 @@ body{
     padding: 4px 7px;
     font-weight: bolder;
 }
+.RedButton{
+    border: none;
+    background-color: #dc3545;
+    color: #383838;
+    border-radius: 5px;
+    letter-spacing: 1px;
+    padding: 4px 7px;
+    font-weight: bolder;
+}
 .shopres{
     max-width: 250px;
     font-size: 1.5rem;
