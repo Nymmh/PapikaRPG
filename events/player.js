@@ -36,6 +36,9 @@ module.exports = {
     requestGiveItem(socket,data,SOCKET_LIST){
         if(socket.lastGiveID)give.giveItemToPeer(socket,data,SOCKET_LIST);
     },
+    requestGiveGun(socket,SOCKET_LIST){
+        if(socket.lastGiveID)inventory.requestGunInvForGive(socket,SOCKET_LIST);
+    },
     requestWantedList(socket){
         police.getWantedList(socket);
     },

@@ -122,6 +122,9 @@ io.on('connection',function (socket){
     socket.on('requestGiveDrugList',()=>{
         player.requestGiveDrug(socket,SOCKET_LIST);
     });
+    socket.on('requestGiveGunsList',()=>{
+        player.requestGiveGun(socket,SOCKET_LIST);
+    });
     socket.on('giveItem',data=>{
         player.requestGiveItem(socket,data,SOCKET_LIST);
     });

@@ -20,7 +20,7 @@ function givePlayerItem(buttonVal){
     <label for="itemAmount">Cocona's</label><input type="number" id="itemAmount" min="1" required placeholder="Amount" value="1" class="itemAmount"><button class="AcceptJobButton" onclick="giveMoney()">Give</button>
     <button id="giveFood" onclick="giveFood()" class="AcceptJobButton">Food</button>
     <button id="giveDrugs" onclick="giveDrugs()" class="AcceptJobButton">Drugs</button>
-    <button id="giveWeapon" onclick="giveWeapon()" class="AcceptJobButton">Weapons</button>
+    <button id="giveWeapon" onclick="giveWeapon()" class="AcceptJobButton">Guns</button>
     <button id="giveClose" onclick="giveClose()" class="RedButton">Close</button>
     </div>`;
 }
@@ -95,6 +95,10 @@ function giveFood(){
 }
 function giveDrugs(){
     socket.emit('requestGiveDrugList');
+    if(document.getElementById('givelist')) document.getElementById('givelist').parentNode.removeChild(document.getElementById('givelist'));
+}
+function giveWeapon(){
+    socket.emit('requestGiveGunsList');
     if(document.getElementById('givelist')) document.getElementById('givelist').parentNode.removeChild(document.getElementById('givelist'));
 }
 function wantedList(){
