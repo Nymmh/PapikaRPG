@@ -62,11 +62,12 @@ socket.on('changelogin',data=>{
     ${addSick}
     ${addRebalTrain}`;
 
-    playArea.innerHTML += `<button id="jobListing" onclick="jobListing()">Job Listings</button>`;
-    playArea.innerHTML += `<button id="workButton" onclick="workButton()">Work</button>`;
-    playArea.innerHTML += `<button id="sleepButton" onclick="sleepButton()">Sleep</button>`;
-    playArea.innerHTML += `<button id="storeListing" onclick="storeListing()">Store</button>`;
-    playArea.innerHTML += `<button id="eatListing" onclick="eatListing()">Eat</button>`;
+    playArea.innerHTML += `<div class="mainHud"><button id="jobListing" onclick="jobListing()">Job Listings</button>
+    <button id="workButton" onclick="workButton()">Work</button>
+    <button id="sleepButton" onclick="sleepButton()">Sleep</button>
+    <button id="storeListing" onclick="storeListing()">Store</button>
+    <button id="eatListing" onclick="eatListing()">Eat</button>
+    <button id="gangsListing" onclick="gangsListing()">Gangs</button></div>`;
     playArea.innerHTML += addTree;
   }else{
     let clientShort = document.getElementById('clientShort');

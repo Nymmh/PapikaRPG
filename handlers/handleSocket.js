@@ -11,11 +11,17 @@ module.exports = {
             rebal_training:socket.rebal_training,
             happiness:socket.happiness,
             hunger:socket.hunger,
-            sleep:socket.sleep});
+            sleep:socket.sleep,
+            gang:socket.gang});
     },
     globalNewJob(socket,SOCKET_LIST){
         for(let i in SOCKET_LIST){
             SOCKET_LIST[i].emit('addToChatGlobal',`System: ${socket.nickname} is now a ${socket.job}`);
+        }
+    },
+    msgToGlobal(data,SOCKET_LIST){
+        for(let i in SOCKET_LIST){
+            SOCKET_LIST[i].emit('addToChatGlobal',data);
         }
     },
     msgToClient(data,socket){

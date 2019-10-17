@@ -167,6 +167,12 @@ io.on('connection',function (socket){
     socket.on('requestBlackMarketDrugs',()=>{
         store.requestBlackMarketDrugs(socket);
     });
+    socket.on('requestMyGang',()=>{
+        player.requestMyGang(socket);
+    });
+    socket.on('createGang',data=>{
+        player.createGang(data,socket,SOCKET_LIST);
+    });
 });
 
 let port = process.env.PORT || 5000;

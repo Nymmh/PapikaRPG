@@ -44,5 +44,11 @@ module.exports = {
     },
     checkBlackMarket(socket){
         socket.emit("blackmarketResponse",socket.foundBlackMarket);
+    },
+    requestMyGang(socket){
+        playerRef.findMyGang(socket);
+    },
+    createGang(data,socket,SOCKET_LIST){
+        playerRef.createGang(data,socket,SOCKET_LIST);
     }
 }

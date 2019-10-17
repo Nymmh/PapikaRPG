@@ -37,6 +37,35 @@ function sleepButton(){
 function storeListing(){
     socket.emit('checkBlackMarket');
 }
+function gangsListing(){
+    if(document.getElementById('storelist')) document.getElementById('storelist').parentNode.removeChild(document.getElementById('storelist'));
+    if(document.getElementById('shopRes')) document.getElementById('shopRes').parentNode.removeChild(document.getElementById('shopRes'));
+    else playArea.innerHTML += `<div class="joblist" id="storelist">
+    <button id="gangsmygang" onclick="gangsmygang()" class="AcceptJobButton">My Gang</button>
+    <button id="gangsCreateGang" onclick="gangsCreateGang()" class="AcceptJobButton">Create Gang</button>
+    <button id="giveClose" onclick="giveClose()" class="RedButton">Close</button>
+    </div>`;
+}
+function gangsmygang(){
+    socket.emit('requestMyGang');
+}
+function gangsCreateGang(){
+    if(document.getElementById('storelist')) document.getElementById('storelist').parentNode.removeChild(document.getElementById('storelist'));
+    if(document.getElementById('shopRes')) document.getElementById('shopRes').parentNode.removeChild(document.getElementById('shopRes'));
+    else playArea.innerHTML += `<form id="createGang" name="createGang"><div class="joblist" id="storelist">
+        <input type="text" id="gangName" placeholder="Gang Name" class="chattext" required/>
+        <input type="text" id="gangIcon" placeholder="Gang Icon URL" class="chattext"/>
+        <input type="submit" value="Create" class="AcceptJobButton">
+    <button id="giveClose" onclick="giveClose()" class="RedButton">Close</button></div></form>`;
+    let gangForm = document.getElementById("createGang");
+    gangForm.addEventListener('submit',gangFromSubmit);
+    function gangFromSubmit(e){
+        e.preventDefault();
+        let gangName = e.target[0].value,
+            gangIcon = e.target[1].value;
+        socket.emit('createGang',{gangName:gangName,gangIcon:gangIcon});
+    }
+}
 function storeListingReponse(data){
     let addblackmarket = '';
     if(data)addblackmarket = `<button id="shopBackMarket" onclick="shopBackMarket()" class="AcceptJobButton">Blackmarket</button>`;
@@ -79,6 +108,7 @@ function shopBeds(){
 function giveClose(){
     if(document.getElementById('givelist')) document.getElementById('givelist').parentNode.removeChild(document.getElementById('givelist'));
     if(document.getElementById('storelist')) document.getElementById('storelist').parentNode.removeChild(document.getElementById('storelist'));
+    if(document.getElementById('shopRes')) document.getElementById('shopRes').parentNode.removeChild(document.getElementById('shopRes'));
     if(document.getElementById('shopRes')) document.getElementById('shopRes').parentNode.removeChild(document.getElementById('shopRes'));
 }
 function storeSubListClose(){

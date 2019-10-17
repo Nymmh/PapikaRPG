@@ -143,10 +143,8 @@ body{
 }
 #jobListing{
     margin-top: .5rem;
-    left: 95%;
-    position: relative;
-    max-width: 9rem;
-    top: .5rem;
+    max-width: 13rem;
+    padding: 0 50px 5px 5px;
     background: transparent;
     border: none;
 }
@@ -155,10 +153,8 @@ body{
 }
 #workButton{
     margin-top: .5rem;
-    left: 89.2%;
-    position: relative;
-    max-width: 9rem;
-    top: 3rem;
+    max-width: 13rem;
+    padding: 0 50px 5px 5px;
     background: transparent;
     border: none;
 }
@@ -167,10 +163,9 @@ body{
 }
 #sleepButton{
     margin-top: .5rem;
-    left: 86.3%;
     position: relative;
-    max-width: 9rem;
-    top: 5.5rem;
+    max-width: 13rem;
+    padding: 0 50px 5px 5px;
     background: transparent;
     border: none;
 }
@@ -179,10 +174,9 @@ body{
 }
 #storeListing{
     margin-top: .5rem;
-    left: 83%;
     position: relative;
-    max-width: 9rem;
-    top:8rem;
+    max-width: 13rem;
+    padding: 0 50px 5px 5px;
     background: transparent;
     border: none;
 }
@@ -191,15 +185,27 @@ body{
 }
 #eatListing{
     margin-top: .5rem;
-    left: 80%;
-    position: relative;
-    max-width: 9rem;
-    top:10.5rem;
+    max-width: 13rem;
+    padding: 0 50px 5px 5px;
     background: transparent;
     border: none;
 }
 #eatListing:focus{
     outline: none;
+}
+#gangsListing{
+    margin-top: .5rem;
+    max-width: 13rem;
+    padding: 0 50px 5px 5px;
+    background: transparent;
+    border: none;
+}
+#gangsListing:focus{
+    outline: none;
+}
+.mainHud{
+    display: inline-grid;
+    float: right;
 }
 .joblist{
     width: 100%;
