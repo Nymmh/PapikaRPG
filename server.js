@@ -173,6 +173,9 @@ io.on('connection',function (socket){
     socket.on('createGang',data=>{
         player.createGang(data,socket,SOCKET_LIST);
     });
+    socket.on('modifyGang',data=>{
+        player.modifyGang(data,socket,SOCKET_LIST);
+    });
 });
 
 let port = process.env.PORT || 5000;

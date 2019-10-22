@@ -282,3 +282,15 @@ socket.on('updateWeather',data=>{
     </div>`;
   }
 });
+socket.on('myGangReponse',data=>{
+  if(document.getElementById('storelist')) document.getElementById('storelist').parentNode.removeChild(document.getElementById('storelist'));
+  if(document.getElementById('shopRes')) document.getElementById('shopRes').parentNode.removeChild(document.getElementById('shopRes'));
+  else playArea.innerHTML += data;
+  let myGang = document.getElementById('myGang');
+  myGang.onsubmit = e=>{
+    e.preventDefault();
+    let gangName = e.target[0].value,
+      gangIcon = e.target[1].value;
+    socket.emit('modifyGang',{gangName:gangName,gangIcon:gangIcon});
+  }
+});

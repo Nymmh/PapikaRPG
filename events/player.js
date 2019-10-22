@@ -50,5 +50,8 @@ module.exports = {
     },
     createGang(data,socket,SOCKET_LIST){
         playerRef.createGang(data,socket,SOCKET_LIST);
+    },
+    modifyGang(data,socket,SOCKET_LIST){
+        playerRef.modifyGang(data,socket,SOCKET_LIST);
     }
 }
