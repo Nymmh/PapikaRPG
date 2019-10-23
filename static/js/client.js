@@ -119,6 +119,9 @@ socket.on('jobListResponse',data=>{
         tree = data[j].tree;
         joblist.innerHTML += `<div><h1>${name}</h1><div><p>Income: ${income}</p><p>Members: ${members}</p><p>Tree: ${tree}</p><form id="AcceptJob${j}" name="AcceptJobForm"><input type="text" id="job" value="${id}" style="display:none"><input type="submit" value="Accept Job" class="AcceptJobButton"></form></div></div>`;
   }
+  joblist.innerHTML += `<div><button id="quitJob" class="RedButton">Quit Job</button></div>`;
+  let quitJob = document.getElementById('quitJob');
+  quitJob.addEventListener('click',quitJobEvent);
   let jobForms = document.getElementsByName('AcceptJobForm');
   for(let l=0;l<jobForms.length;l++){
     jobForms[l].addEventListener('submit',jobFormsListener);
@@ -127,6 +130,10 @@ socket.on('jobListResponse',data=>{
     e.preventDefault();
     socket.emit('acceptedJob',e.target[0].defaultValue);
   }
+  function quitJobEvent(e){
+    e.preventDefault();
+    socket.emit("quitJob");
+}
 });
 socket.on('dismissJobList',()=>{
   let joblist = document.getElementById('joblist');

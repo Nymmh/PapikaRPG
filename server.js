@@ -176,6 +176,9 @@ io.on('connection',function (socket){
     socket.on('modifyGang',data=>{
         player.modifyGang(data,socket,SOCKET_LIST);
     });
+    socket.on('quitJob',()=>{
+        player.quitJob(socket,SOCKET_LIST);
+    });
 });
 
 let port = process.env.PORT || 5000;

@@ -53,5 +53,8 @@ module.exports = {
     },
     modifyGang(data,socket,SOCKET_LIST){
         playerRef.modifyGang(data,socket,SOCKET_LIST);
+    },
+    quitJob(socket,SOCKET_LIST){
+        atlis.quitJob(socket,SOCKET_LIST);
     }
 }

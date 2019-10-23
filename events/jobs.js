@@ -5,7 +5,7 @@ module.exports = {
         atlis.getJobListing(socket,SOCKET_LIST);
     },
     acceptedjob(data,socket,SOCKET_LIST){
-        if(socket.jobID == 0){
+        if(socket.jobID == 0 || socket.jobID == "Unemployed"){
             let jobAccept = ~~(Math.random()*100),
                 reject = 0,
                 rate = 0;
